@@ -9,14 +9,19 @@ import SwiftUI
 
 @main
 struct SukGiSiDaeApp: App {
-    var repository = GameRepository()
-
+    private var gameState = MyGameState()
     var body: some Scene {
         WindowGroup {
-            ContentView(gameListQuery: repository.gameListQuery)
-                .onAppear {
-                    repository.initializeGames()
-                }
+            MainView()
+                .environmentObject(gameState)
+            
+            //            ContentView(gameListQuery: repository.gameListQuery)
+            //                .onAppear {
+            //                    repository.initializeGames()
+            //                }
+//            StartView(gameListQuery: repository.gameListQuery, tag: 0).onAppear {
+//                repository.initializeGames()
+//            }
         }
         .modelContainer(Database.shared.container)
     }
