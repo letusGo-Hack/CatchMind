@@ -25,6 +25,8 @@ struct ContentView: View {
         //            Text("Hello, world!")
         //        }
         VStack {
+            BrushColorPicker()
+            
             TimerView(timeRemaining: 210, isStart: true)
             Divider()
             AnswerView(strAnswer: "애플")
