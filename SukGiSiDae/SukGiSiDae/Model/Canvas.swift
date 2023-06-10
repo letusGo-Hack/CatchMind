@@ -123,7 +123,6 @@ class Canvas: ObservableObject {
         groupSession.$activeParticipants
             .sink { activeParticipants in
                 let newParticipants = activeParticipants.subtracting(groupSession.activeParticipants)
-
                 Task {
                     try? await messenger.send(CanvasMessage(strokes: self.strokes, pointCount: self.pointCount), to: .only(newParticipants))
                 }

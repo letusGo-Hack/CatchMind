@@ -178,6 +178,8 @@ final class GameUseCase: GameUseCaseProtocol {
                 Task {
                     try? await messenger.send(newValue, completion: { (error) in })
                 }
+
+                print("sucess!!!!")
             }
             .store(in: &cancelBag)
 
@@ -196,6 +198,7 @@ final class GameUseCase: GameUseCaseProtocol {
     }
 
     private func handleGameState(_ state: GameState) {
+        self._state.send(state)
         print("state updated! : \(state)")
     }
 
