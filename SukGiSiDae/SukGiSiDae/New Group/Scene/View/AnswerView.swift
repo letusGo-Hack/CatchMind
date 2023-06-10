@@ -14,8 +14,8 @@ struct AnswerView: View {
     var body: some View {
         VStack {
             Text("답 : \(strAnswer)")
-                .font(.system(size: 50))
-        }.background(.yellow)
+                .font(.system(size: 20, weight: .bold))
+        }
     }
 }
 

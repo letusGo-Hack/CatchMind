@@ -14,12 +14,15 @@ struct AnswerInputTextField: View {
         TextField("정답을 입력해주세요.", text: $inputtedAnswer)
             .frame(height: 50)
             .padding([.leading, .trailing])
+            .background(.white)
+            .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(lineWidth: 1)
             )
             .padding()
-        
+
+
     }
 }
 
