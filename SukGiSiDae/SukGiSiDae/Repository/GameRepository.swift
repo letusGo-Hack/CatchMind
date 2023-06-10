@@ -35,7 +35,7 @@ final class GameRepository {
     }
 }
 
-private extension GameRepository {
+extension GameRepository {
     func createGames() -> [Game] {
         let numberOfGames: Int = 10
 

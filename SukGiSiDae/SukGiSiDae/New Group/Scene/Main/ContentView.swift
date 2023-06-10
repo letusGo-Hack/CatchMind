@@ -16,10 +16,12 @@ struct ContentView: View {
     @State private var inputtedAnswer: String = ""
     // "정답이에용" 대신에 실제 답 들어감
     private let answerArr: [String] = "정답이에옹".split(separator: "").map { String($0) }
-    private let gameUseCase = GameUseCase()
-  
+    private let gameUseCase: GameUseCaseProtocol = GameUseCase(games: GameRepository().createGames())
+
     var body: some View {
         VStack {
+            RefreshCanvasButton(canvas: canvas)
+            
             BrushColorPicker() 
             TimerView(timeRemaining: 180, isStart: true)
             Divider()
@@ -50,7 +52,3 @@ struct ContentView: View {
         }
     }
 }
-    
-    #Preview {
-        ContentView()
-    }

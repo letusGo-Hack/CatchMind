@@ -22,7 +22,7 @@ class Canvas: ObservableObject {
     @Published var activeStroke: Stroke?
     @Published var images = [CanvasImage]()
     @Published var selectedImageData: Data?
-    let strokeColor = Stroke.Color.random
+    let strokeColor = Stroke.Color.black
 
     var subscriptions = Set<AnyCancellable>()
     var tasks = Set<Task<Void, Never>>()
