@@ -19,27 +19,38 @@ struct ContentView: View {
     private let gameUseCase: GameUseCaseProtocol = GameUseCase(games: GameRepository().createGames())
 
     var body: some View {
-        VStack {
-            RefreshCanvasButton(canvas: canvas)
-            TimerView(timeRemaining: 180, isStart: true)
-            Divider()
-            AnswerView(strAnswer: "애플")
-            
-            Divider()
-            ZStack {
-                CanvasView(canvas: canvas)
-                HStack(spacing: 10) {
-                    ForEach(answerArr, id: \.self) { _ in
-                        InputtedAnswerView(inputtedAnswer: $inputtedAnswer)
+
+        ZStack {
+            Image("stoneBackground")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
+            VStack {
+                RefreshCanvasButton(canvas: canvas)
+
+                TimerView(timeRemaining: 210, isStart: true)
+                AnswerView(strAnswer: "애플")
+                ZStack(alignment: .bottom) {
+                    CanvasView(canvas: canvas)
+
+                    HStack(spacing: 10) {
+                        ForEach(answerArr, id: \.self) { _ in
+                            InputtedAnswerView(inputtedAnswer: $inputtedAnswer)
+                        }
                     }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+
                 }
+                .background(.black)
+
+                AnswerInputTextField(inputtedAnswer: $inputtedAnswer)
+
             }
-            .background(.black)
-          
-            AnswerInputTextField(inputtedAnswer: $inputtedAnswer)
-            
+            .padding()
         }
-        .padding()
+
         .task {
             for await session in GameActivity.sessions() {
                 gameUseCase.configureGroupSession(session)

@@ -11,27 +11,34 @@ struct CanvasView: View {
     @ObservedObject var canvas: Canvas
 
     var body: some View {
-        GeometryReader { _ in
-            ForEach(canvas.strokes) { stroke in
-                StrokeView(stroke: stroke)
-            }
 
-            ForEach(canvas.images) { image in
-                if let uiImage = UIImage(data: image.imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250, height: 250)
-                        .position(image.location)
+        ZStack {
+            Image("drawingPaper")
+                .resizable()
+
+            GeometryReader { _ in
+                ForEach(canvas.strokes) { stroke in
+                    StrokeView(stroke: stroke)
+                }
+
+                ForEach(canvas.images) { image in
+                    if let uiImage = UIImage(data: image.imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 250, height: 250)
+                            .position(image.location)
+                    }
+                }
+                if let activeStroke = canvas.activeStroke {
+                    StrokeView(stroke: activeStroke)
                 }
             }
-            if let activeStroke = canvas.activeStroke {
-                StrokeView(stroke: activeStroke)
-            }
+
+            .background(Color(uiColor: .clear))
+            .gesture(strokeGesture)
         }
         .frame(maxHeight: .infinity)
-        .background(Color(uiColor: .systemBackground))
-        .gesture(strokeGesture)
     }
 
     var strokeGesture: some Gesture {

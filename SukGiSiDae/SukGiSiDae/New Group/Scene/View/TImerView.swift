@@ -17,15 +17,18 @@ struct TimerView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack {
+        ZStack {
+            Image("startStone")
+                .resizable()
+                .frame(width: 131, height: 77)
             Text(convertSecondsToTime(timeInSeconds:timeRemaining))
-                .font(.system(size: 50))
+                .font(.system(size: 25, weight: .bold))
                 .onReceive(timer) { _ in
                     if isStart {
                         timeRemaining -= 1
                     }
                 }
-        }.background(.purple)
+        }
     }
     
     func convertSecondsToTime(timeInSeconds: Int) -> String {
