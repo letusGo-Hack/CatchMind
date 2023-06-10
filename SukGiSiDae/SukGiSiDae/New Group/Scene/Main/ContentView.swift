@@ -10,20 +10,22 @@ import SwiftData
 
 struct ContentView: View {
     @Query var gameListQuery: [Game]
+    @State var user: GameUser
     @StateObject var canvas = Canvas()
     var body: some View {
-        //        if let game = gameListQuery.first {
-        //            Text("첫 번째 퀴즈 : \(game.quizes.first ?? "")")
-        //        } else {
-        //            Image(systemName: "globe")
-        //                .imageScale(.large)
-        //                .foregroundStyle(.tint)
-        //            Text("Hello, world!")
-        //        }
         VStack {
-            TimerView(timeRemaining: 210, isStart: true)
+            TimerView(timeRemaining: user.timer, isStart: true)
             Divider()
-            AnswerView(strAnswer: "애플")
+//            if let game = gameListQuery.first {
+            if user.isQuestioner {
+                AnswerView(strAnswer: "\(user.strAnswer ?? "뭐지?")")
+            }
+//            }else {
+//                Image(systemName: "globe")
+//                    .imageScale(.large)
+//                    .foregroundStyle(.tint)
+//                Text("Hello, world!")
+//            }
             
             Divider()
             ZStack {
@@ -31,14 +33,22 @@ struct ContentView: View {
             }
             .background(.black)
         }.padding()
+            .background(
+                Image("stoneBackground")
+            )
             .onAppear() {
                 let game = GameRepository().randomGame
-                print("quizs : \(game.quizes)")
+                getUser()
+                print("quizs : \(user.strAnswer)")
             }
-        
+    }
+    
+    func getUser() {
+        guard let game = gameListQuery.first else { return }
+        user = GameUser(isQuestioner: true, strAnswer: game.quizes.first ?? "", timer: 180, successCnt: 1, gameCnt: 1)
     }
 }
-    
-    #Preview {
-        ContentView()
-    }
+
+#Preview {
+    ContentView(user: GameUser(isQuestioner: false, strAnswer: "", timer: 180, successCnt: 1, gameCnt: 1))
+}

@@ -13,7 +13,7 @@ struct SukGiSiDaeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(gameListQuery: repository.gameListQuery)
+            ContentView(gameListQuery: repository.gameListQuery, user: GameUser(isQuestioner: false, strAnswer: "", timer: 180, successCnt: 1, gameCnt: 1))
                 .onAppear {
                     repository.initializeGames()
                 }
