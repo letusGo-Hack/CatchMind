@@ -12,12 +12,13 @@ struct InputtedAnswerView: View {
     
     var body: some View {
         ZStack {
-            Image(systemName: "doc.plaintext")
+            Image(.wordStone)
                 .resizable()
                 .frame(width: 50, height: 50)
                 .foregroundStyle(.brown)
             
             Text(inputtedAnswer)
+                .foregroundStyle(.black)
                 .font(.system(size: 30))
                 .multilineTextAlignment(.center)
                 .frame(width: 50, height: 50)

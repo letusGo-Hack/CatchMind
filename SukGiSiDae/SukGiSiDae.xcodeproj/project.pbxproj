@@ -22,6 +22,7 @@
 		76F14E232A34259500B1CF3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76F14E222A34259500B1CF3C /* Preview Assets.xcassets */; };
 		76F14E372A34537F00B1CF3C /* InputtedAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */; };
 		76F14E382A34537F00B1CF3C /* AnswerInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */; };
+		76F14E442A345DD700B1CF3C /* BrushColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */; };
 		B878E1912A34554F005671BD /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E1902A34554F005671BD /* PopupView.swift */; };
 		DEE0A4C72A34473400293C95 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C22A34473400293C95 /* GameRepository.swift */; };
 		DEE0A4C82A34473400293C95 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C42A34473400293C95 /* Game.swift */; };
@@ -49,6 +50,7 @@
 		76F14E222A34259500B1CF3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputtedAnswerView.swift; path = SukGiSiDae/Scene/Main/InputtedAnswerView.swift; sourceTree = SOURCE_ROOT; };
 		76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerInputTextField.swift; path = SukGiSiDae/Scene/Main/AnswerInputTextField.swift; sourceTree = SOURCE_ROOT; };
+		76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushColorPicker.swift; sourceTree = "<group>"; };
 		B878E1902A34554F005671BD /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DEE0A4C22A34473400293C95 /* GameRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		DEE0A4C42A34473400293C95 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */,
 				76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */,
 				76F14E1D2A34259400B1CF3C /* ContentView.swift */,
+				76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */,
 				B878E1902A34554F005671BD /* PopupView.swift */,
 			);
 			path = Main;
@@ -272,6 +275,7 @@
 				DEE0A4D32A344BED00293C95 /* User.swift in Sources */,
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
 				DEE0A4C92A34473400293C95 /* Database.swift in Sources */,
+				76F14E442A345DD700B1CF3C /* BrushColorPicker.swift in Sources */,
 				66149D322A344CCB001F8A4D /* AnswerView.swift in Sources */,
 				66149D302A344CCB001F8A4D /* StrokeView.swift in Sources */,
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
