@@ -4,6 +4,11 @@
 //
 
 import Foundation
+import SwiftUI
+
+class MyGameState: ObservableObject {
+    @Published var gameState = GameState()
+}
 
 struct GameState: Codable {
     var status: GameStatus = .시작_대기
