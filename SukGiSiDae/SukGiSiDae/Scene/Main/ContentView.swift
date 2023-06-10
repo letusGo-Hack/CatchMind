@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Query var gameListQuery: [Game]
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if let game = gameListQuery.first {
+                Text("첫 번째 퀴즈 : \(game.quizes.first ?? "")")
+            } else {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
         }
         .padding()
-        .onAppear() {
-            let game = GameRepository().randomGame
-            print("quizs : \(game.quizes)")
-        }
     }
 }
 

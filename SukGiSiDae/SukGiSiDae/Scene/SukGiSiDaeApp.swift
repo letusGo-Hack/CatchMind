@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct SukGiSiDaeApp: App {
+    var repository = GameRepository()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(gameListQuery: repository.gameListQuery)
+                .onAppear {
+                    repository.initializeGames()
+                }
         }
+        .modelContainer(Database.shared.container)
     }
 }
