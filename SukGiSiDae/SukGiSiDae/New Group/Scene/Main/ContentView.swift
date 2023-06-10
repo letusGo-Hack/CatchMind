@@ -9,9 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-<<<<<<< HEAD:SukGiSiDae/SukGiSiDae/New Group/Scene/Main/ContentView.swift
+    @Query var gameListQuery: [Game]
     @StateObject var canvas = Canvas()
     var body: some View {
+        //        if let game = gameListQuery.first {
+        //            Text("첫 번째 퀴즈 : \(game.quizes.first ?? "")")
+        //        } else {
+        //            Image(systemName: "globe")
+        //                .imageScale(.large)
+        //                .foregroundStyle(.tint)
+        //            Text("Hello, world!")
+        //        }
         VStack {
             TimerView(timeRemaining: 210, isStart: true)
             Divider()
@@ -23,29 +31,14 @@ struct ContentView: View {
             }
             .background(.black)
         }.padding()
-        .onAppear() {
-            let game = GameRepository().randomGame
-            print("quizs : \(game.quizes)")
-        }
-=======
-    @Query var gameListQuery: [Game]
-
-    var body: some View {
-        VStack {
-            if let game = gameListQuery.first {
-                Text("첫 번째 퀴즈 : \(game.quizes.first ?? "")")
-            } else {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+            .onAppear() {
+                let game = GameRepository().randomGame
+                print("quizs : \(game.quizes)")
             }
-        }
-        .padding()
->>>>>>> main:SukGiSiDae/SukGiSiDae/Scene/Main/ContentView.swift
+        
     }
 }
-
-#Preview {
-    ContentView()
-}
+    
+    #Preview {
+        ContentView()
+    }
