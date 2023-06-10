@@ -23,9 +23,14 @@
 		76F14E372A34537F00B1CF3C /* InputtedAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */; };
 		76F14E382A34537F00B1CF3C /* AnswerInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */; };
 		76F14E442A345DD700B1CF3C /* BrushColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */; };
+		B878E1912A34554F005671BD /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E1902A34554F005671BD /* PopupView.swift */; };
 		DEE0A4C72A34473400293C95 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C22A34473400293C95 /* GameRepository.swift */; };
 		DEE0A4C82A34473400293C95 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C42A34473400293C95 /* Game.swift */; };
 		DEE0A4C92A34473400293C95 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C62A34473400293C95 /* Database.swift */; };
+		DEE0A4CC2A344B0500293C95 /* GameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4CB2A344B0500293C95 /* GameUseCase.swift */; };
+		DEE0A4CE2A344B3300293C95 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4CD2A344B3300293C95 /* GameResult.swift */; };
+		DEE0A4D12A344B9700293C95 /* GameActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4D02A344B9700293C95 /* GameActivity.swift */; };
+		DEE0A4D32A344BED00293C95 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4D22A344BED00293C95 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +51,15 @@
 		76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputtedAnswerView.swift; path = SukGiSiDae/Scene/Main/InputtedAnswerView.swift; sourceTree = SOURCE_ROOT; };
 		76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerInputTextField.swift; path = SukGiSiDae/Scene/Main/AnswerInputTextField.swift; sourceTree = SOURCE_ROOT; };
 		76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushColorPicker.swift; sourceTree = "<group>"; };
+		B878E1902A34554F005671BD /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DEE0A4C22A34473400293C95 /* GameRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		DEE0A4C42A34473400293C95 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DEE0A4C62A34473400293C95 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		DEE0A4CB2A344B0500293C95 /* GameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUseCase.swift; sourceTree = "<group>"; };
+		DEE0A4CD2A344B3300293C95 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		DEE0A4D02A344B9700293C95 /* GameActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActivity.swift; sourceTree = "<group>"; };
+		DEE0A4D22A344BED00293C95 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DEE0A4D42A34550600293C95 /* SukGiSiDae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SukGiSiDae.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +100,12 @@
 		76F14E1A2A34259400B1CF3C /* SukGiSiDae */ = {
 			isa = PBXGroup;
 			children = (
+				DEE0A4D42A34550600293C95 /* SukGiSiDae.entitlements */,
 				66149D1F2A344BE6001F8A4D /* New Group */,
 				DEE0A4C52A34473400293C95 /* Database */,
 				DEE0A4C32A34473400293C95 /* Model */,
 				DEE0A4C12A34473400293C95 /* Repository */,
+				DEE0A4CA2A344ADF00293C95 /* Networking */,
 				76F14E1F2A34259500B1CF3C /* Assets.xcassets */,
 				76F14E212A34259500B1CF3C /* Preview Content */,
 			);
@@ -128,6 +141,7 @@
 				76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */,
 				76F14E1D2A34259400B1CF3C /* ContentView.swift */,
 				76F14E432A345DD700B1CF3C /* BrushColorPicker.swift */,
+				B878E1902A34554F005671BD /* PopupView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -149,6 +163,8 @@
 				66149D232A344C07001F8A4D /* Messages.swift */,
 				66149D212A344C07001F8A4D /* Stroke.swift */,
 				DEE0A4C42A34473400293C95 /* Game.swift */,
+				DEE0A4D22A344BED00293C95 /* User.swift */,
+				DEE0A4CD2A344B3300293C95 /* GameResult.swift */,
 			);
 			name = Model;
 			path = SukGiSiDae/Model;
@@ -162,6 +178,23 @@
 			name = Database;
 			path = SukGiSiDae/Database;
 			sourceTree = SOURCE_ROOT;
+		};
+		DEE0A4CA2A344ADF00293C95 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DEE0A4CF2A344B8200293C95 /* Game */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DEE0A4CF2A344B8200293C95 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				DEE0A4D02A344B9700293C95 /* GameActivity.swift */,
+				DEE0A4CB2A344B0500293C95 /* GameUseCase.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -235,7 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE0A4C72A34473400293C95 /* GameRepository.swift in Sources */,
+				DEE0A4CE2A344B3300293C95 /* GameResult.swift in Sources */,
+				DEE0A4CC2A344B0500293C95 /* GameUseCase.swift in Sources */,
 				76F14E1E2A34259400B1CF3C /* ContentView.swift in Sources */,
+				DEE0A4D12A344B9700293C95 /* GameActivity.swift in Sources */,
+				DEE0A4D32A344BED00293C95 /* User.swift in Sources */,
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
 				DEE0A4C92A34473400293C95 /* Database.swift in Sources */,
 				76F14E442A345DD700B1CF3C /* BrushColorPicker.swift in Sources */,
@@ -244,6 +281,7 @@
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
 				DEE0A4C92A34473400293C95 /* Database.swift in Sources */,
 				66149D262A344C07001F8A4D /* Canvas.swift in Sources */,
+				B878E1912A34554F005671BD /* PopupView.swift in Sources */,
 				76F14E372A34537F00B1CF3C /* InputtedAnswerView.swift in Sources */,
 				66149D242A344C07001F8A4D /* DrawTogether.swift in Sources */,
 				66149D332A344CCB001F8A4D /* TImerView.swift in Sources */,
@@ -382,10 +420,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SukGiSiDae/SukGiSiDae.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SukGiSiDae/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P9MW78T4QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -398,8 +438,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.letusgo.team8.SukGiSiDae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.letusgo.SukGiSiDae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,10 +452,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SukGiSiDae/SukGiSiDae.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SukGiSiDae/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P9MW78T4QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -427,8 +470,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.letusgo.team8.SukGiSiDae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.letusgo.SukGiSiDae;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

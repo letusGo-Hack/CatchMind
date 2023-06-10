@@ -13,17 +13,10 @@ struct ContentView: View {
     @StateObject var canvas = Canvas()
     @State private var inputtedAnswer: String = ""
     // "정답이에용" 대신에 실제 답 들어감
-    let answerArr: [String] = "정답이에옹".split(separator: "").map { String($0) }
-    
+    private let answerArr: [String] = "정답이에옹".split(separator: "").map { String($0) }
+    private let gameUseCase = GameUseCase()
+  
     var body: some View {
-        //        if let game = gameListQuery.first {
-        //            Text("첫 번째 퀴즈 : \(game.quizes.first ?? "")")
-        //        } else {
-        //            Image(systemName: "globe")
-        //                .imageScale(.large)
-        //                .foregroundStyle(.tint)
-        //            Text("Hello, world!")
-        //        }
         VStack {
             BrushColorPicker()
             
@@ -42,15 +35,19 @@ struct ContentView: View {
                 }
             }
             .background(.black)
-            
+          
             AnswerInputTextField(inputtedAnswer: $inputtedAnswer)
             
-        }.padding()
-            .onAppear() {
-                let game = GameRepository().randomGame
-                print("quizs : \(game.quizes)")
+        }
+        .padding()
+        .task {
+            for await session in GameActivity.sessions() {
+                gameUseCase.configureGroupSession(session)
             }
-        
+        }
+        .onAppear() {
+            gameUseCase.startSession()
+        }
     }
 }
     
