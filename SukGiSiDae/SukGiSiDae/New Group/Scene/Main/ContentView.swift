@@ -21,8 +21,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             RefreshCanvasButton(canvas: canvas)
-            
-            BrushColorPicker() 
             TimerView(timeRemaining: 180, isStart: true)
             Divider()
             AnswerView(strAnswer: "애플")
