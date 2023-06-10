@@ -20,6 +20,7 @@ final class GameRepository {
         let games = createGames()
         games.forEach {
             database.mainContext.insert($0)
+            try! database.mainContext.save()
         }
     }
 
