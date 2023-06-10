@@ -21,10 +21,10 @@ struct PopupView: View {
             description
         })
         .padding(
-            EdgeInsets(top: 50, leading: 100, bottom: 50, trailing: 100)
+            EdgeInsets(top: 50, leading: 50, bottom: 50, trailing: 50)
         )
         .multilineTextAlignment(.center)
-        .background(.white)
+        .background(.placeholder)
         .shadow(radius: 10)
     }
 }
@@ -36,6 +36,15 @@ struct PopupView_Previews: PreviewProvider {
 }
 
 private extension PopupView {
+
+    var backgroundImage: some View {
+        Image("stoneBackground")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+            .frame(width: 200, height: 300, alignment: .center)
+    }
+
     var title: some View {
         Text(isAnswer ? "성공" : "실패")
             .font(.title)
@@ -59,7 +68,7 @@ private extension PopupView {
             "\(successPerson)님이 맞혔습니다" :
             "아무도 맞히지 못했습니다"
         )
-            .font(.caption)
+        .font(.title3)
             .padding(
                 EdgeInsets(
                     top: 12,
