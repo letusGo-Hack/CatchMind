@@ -1,4 +1,3 @@
-
 # 캐치마인드 (가제)
 
  <img width="619" alt="스크린샷 2023-06-10 오전 11 47 20" src="https://github.com/letusGo-Hack/CatchMind/assets/26176588/c56bfc95-e0c7-495a-a35a-81586817619a">
@@ -18,6 +17,13 @@
 - SwiftData
 
 ### (2) 프로젝트 소개
+
+<details><summary>와이어 프레임</summary>
+    <p>
+<img width="312" alt="스크린샷 2023-06-10 오전 11 51 33" src="https://github.com/letusGo-Hack/CatchMind/assets/26176588/2e012d91-64c7-4a4b-8676-087df8d4e559">
+
+    </p>
+</details>
 
 1. 돌아가면서 퀴즈를 낸다
 2. 퀴즈를 그림으로 설명한다
