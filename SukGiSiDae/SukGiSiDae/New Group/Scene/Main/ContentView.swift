@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var canvas = Canvas()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+            TimerView(timeRemaining: 210, isStart: true)
+            Divider()
+            AnswerView(strAnswer: "애플")
+            
+            Divider()
+            ZStack {
+                CanvasView(canvas: canvas)
+            }
+            .background(.black)
+        }.padding()
         .onAppear() {
             let game = GameRepository().randomGame
             print("quizs : \(game.quizes)")
