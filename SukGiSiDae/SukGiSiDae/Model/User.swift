@@ -5,12 +5,8 @@
 
 import Foundation
 
-struct User {
-    let role: Role
+struct User: Codable {
+    let id: String
+    let name: String
     let win: Int
-}
-
-enum Role {
-    case host // 첫 세션을 생성한 사람
-    case player
 }
