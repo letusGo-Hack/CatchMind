@@ -18,7 +18,7 @@ struct StrokeView: View {
 
 struct StrokeView_Previews: PreviewProvider {
     static var previews: some View {
-        StrokeView(stroke: Stroke(color: .red))
+        StrokeView(stroke: Stroke(color: .black))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -18,7 +18,7 @@ struct ContentView: View {
   
     var body: some View {
         VStack {
-            BrushColorPicker()
+            RefreshCanvasButton(canvas: canvas)
             
             TimerView(timeRemaining: 210, isStart: true)
             Divider()
