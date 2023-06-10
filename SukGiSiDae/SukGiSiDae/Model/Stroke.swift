@@ -55,47 +55,13 @@ class Stroke: ObservableObject, Identifiable, Codable {
 
 extension Stroke {
     enum Color: Int, Codable, CaseIterable {
-        case red
-        case orange
-        case yellow
-        case green
-        case mint
-        case teal
-        case cyan
-        case indigo
-        case purple
-        case pink
-        case brown
+        case black
 
         var uiColor: SwiftUI.Color {
             switch self {
-            case .red:
-                return .red
-            case .orange:
-                return .orange
-            case .yellow:
-                return .yellow
-            case .green:
-                return .green
-            case .mint:
-                return .mint
-            case .teal:
-                return .teal
-            case .cyan:
-                return .cyan
-            case .indigo:
-                return .indigo
-            case .purple:
-                return .purple
-            case .pink:
-                return .pink
-            case .brown:
-                return .brown
+            case .black:
+                return .black
             }
-        }
-
-        static var random: Color {
-            return allCases.randomElement()!
         }
     }
 }
