@@ -14,14 +14,15 @@ protocol GameStateOwner {
 }
 
 protocol HostUseCase: GameStateOwner {
-    func decideWinner(_ user: User)
 }
 
 protocol PlayerUseCase: GameStateOwner {
-    func sendAnswer(_ answer: String)
+    func endRound() // 정답 맞춘 유저가 호출
 }
 
 protocol GameUseCaseProtocol: HostUseCase, PlayerUseCase {
+    var amIHost: Bool { get }
+
     func startSession()
 
     func gameStart()
@@ -32,9 +33,11 @@ protocol GameUseCaseProtocol: HostUseCase, PlayerUseCase {
 final class GameUseCase: GameUseCaseProtocol {
     // MARK: - Properties
 
-    var players: [User] = []
-    var state: AnyPublisher<GameState, Never> = Empty<GameState, Never>.init(completeImmediately: false).eraseToAnyPublisher()
-    var quiz: AnyPublisher<Quiz, Never> = Empty<Quiz, Never>.init(completeImmediately: false).eraseToAnyPublisher()
+    var state: AnyPublisher<GameState, Never> {
+        _state.eraseToAnyPublisher()
+    }
+
+    private var _state: CurrentValueSubject<GameState, Never> = .init(.init())
 
     @Published private var groupSession: GroupSession<GameActivity>?
     private var messenger: GroupSessionMessenger?
@@ -42,6 +45,17 @@ final class GameUseCase: GameUseCaseProtocol {
 
     private var cancelBag: Set<AnyCancellable> = .init()
     private var tasks = Set<Task<Void, Never>>()
+    private let games: [Game]
+
+    var amIHost: Bool {
+        groupSession?.id.uuidString == _state.value.host?.id
+    }
+
+    // MARK: - Initializer
+
+    init(games: [Game]) {
+        self.games = games
+    }
 
     // MARK: - Methods
 
@@ -56,15 +70,74 @@ final class GameUseCase: GameUseCaseProtocol {
     }
 
     func gameStart() {
+        let oldValue = self._state.value
+        var copiedValue = oldValue
 
+        copiedValue.status = .시작_카운트_다운
+        copiedValue.game = .init(game: self.games.first!)
+
+        let newValue = copiedValue
+
+        self.sendState(newValue)
+
+        let countDownValue: Int = 5
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(countDownValue), execute: {
+            self.realGameStart()
+        })
     }
 
-    func decideWinner(_ user: User) {
+    private func realGameStart() {
+        let oldValue = _state.value
+        var copiedValue = oldValue
 
+        copiedValue.status = .게임_시작
+        copiedValue.host = copiedValue.player.randomElement()
+
+        let newValue = copiedValue
+        sendState(newValue)
+
+        startRound()
     }
 
-    func sendAnswer(_ answer: String) {
+    private func startRound() {
+        let oldValue = _state.value
+        var copiedValue = oldValue
 
+        copiedValue.status = .라운드_시작
+        copiedValue.host = copiedValue.player.randomElement()
+        copiedValue.currentRound += 1
+
+        let newValue = copiedValue
+        sendState(newValue)
+    }
+
+    func endRound() {
+        let oldValue = _state.value
+        var copiedValue = oldValue
+
+        copiedValue.status = .라운드_종료
+
+        let newValue = copiedValue
+        sendState(newValue)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            if newValue.isFinalRound {
+                self.gameEnd()
+            } else {
+                self.startRound()
+            }
+        })
+    }
+
+    private func gameEnd() {
+        let oldValue = _state.value
+        var copiedValue = oldValue
+
+        copiedValue.status = .게임_종료
+
+        let newValue = copiedValue
+        sendState(newValue)
     }
 
     func configureGroupSession(_ groupSession: GroupSession<GameActivity>) {
@@ -90,15 +163,26 @@ final class GameUseCase: GameUseCaseProtocol {
             .sink { activeParticipants in
                 let newParticipants = activeParticipants.subtracting(groupSession.activeParticipants)
 
+                let newUsers =  newParticipants.map {
+                    User(id: $0.id.uuidString)
+                }
+
+                let oldValue = self._state.value
+                var copiedValue = oldValue
+
+                copiedValue.player.append(contentsOf: newUsers)
+                copiedValue.player = copiedValue.player.uniqued()
+
+                let newValue = copiedValue
+
                 Task {
-                    print("new participants")
-                    try? await messenger.send(GameState(), to: .only(newParticipants), completion: { (error) in })
+                    try? await messenger.send(newValue, completion: { (error) in })
                 }
             }
             .store(in: &cancelBag)
 
         var task = Task {
-            for await (state, _) in messenger.messages(of: GameState.self) {
+            for await (state, test) in messenger.messages(of: GameState.self) {
                 handleGameState(state)
             }
         }
@@ -115,10 +199,18 @@ final class GameUseCase: GameUseCaseProtocol {
         print("state updated! : \(state)")
     }
 
-//    private func handleNewParticipant(_ newParticipants: Set<Participant>) async throws {
-//        Task {
-//            try? await messenger?.send(GameState(), to: .only(newParticipants), completion: { (error) in
-//            })
-//        }
-//    }
+    private func sendState(_ state: GameState) {
+        Task {
+            try? await messenger?.send(state, completion: { (error) in
+                print("send state error: \(error)")
+            })
+        }
+    }
+}
+
+private extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter{ seen.insert($0).inserted }
+    }
 }

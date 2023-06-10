@@ -4,9 +4,8 @@
 //
 
 import Foundation
+import UIKit
 
-struct User: Codable {
+struct User: Codable, Hashable {
     let id: String
-    let name: String
-    let win: Int
 }
