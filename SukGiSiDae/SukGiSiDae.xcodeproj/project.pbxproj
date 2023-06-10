@@ -20,8 +20,8 @@
 		76F14E1E2A34259400B1CF3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E1D2A34259400B1CF3C /* ContentView.swift */; };
 		76F14E202A34259500B1CF3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76F14E1F2A34259500B1CF3C /* Assets.xcassets */; };
 		76F14E232A34259500B1CF3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76F14E222A34259500B1CF3C /* Preview Assets.xcassets */; };
-		76F14E332A34506400B1CF3C /* AnswerInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E312A34506300B1CF3C /* AnswerInputTextField.swift */; };
-		76F14E342A34506400B1CF3C /* InputtedAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E322A34506300B1CF3C /* InputtedAnswerView.swift */; };
+		76F14E372A34537F00B1CF3C /* InputtedAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */; };
+		76F14E382A34537F00B1CF3C /* AnswerInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */; };
 		DEE0A4C72A34473400293C95 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C22A34473400293C95 /* GameRepository.swift */; };
 		DEE0A4C82A34473400293C95 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C42A34473400293C95 /* Game.swift */; };
 		DEE0A4C92A34473400293C95 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0A4C62A34473400293C95 /* Database.swift */; };
@@ -42,8 +42,8 @@
 		76F14E1D2A34259400B1CF3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76F14E1F2A34259500B1CF3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76F14E222A34259500B1CF3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		76F14E312A34506300B1CF3C /* AnswerInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerInputTextField.swift; sourceTree = "<group>"; };
-		76F14E322A34506300B1CF3C /* InputtedAnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputtedAnswerView.swift; sourceTree = "<group>"; };
+		76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputtedAnswerView.swift; path = SukGiSiDae/Scene/Main/InputtedAnswerView.swift; sourceTree = SOURCE_ROOT; };
+		76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerInputTextField.swift; path = SukGiSiDae/Scene/Main/AnswerInputTextField.swift; sourceTree = SOURCE_ROOT; };
 		DEE0A4C22A34473400293C95 /* GameRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		DEE0A4C42A34473400293C95 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DEE0A4C62A34473400293C95 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		DE6FD5702A343155003BAAA3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				76F14E312A34506300B1CF3C /* AnswerInputTextField.swift */,
-				76F14E322A34506300B1CF3C /* InputtedAnswerView.swift */,
+				76F14E362A34537F00B1CF3C /* AnswerInputTextField.swift */,
+				76F14E352A34537F00B1CF3C /* InputtedAnswerView.swift */,
 				76F14E1D2A34259400B1CF3C /* ContentView.swift */,
 			);
 			path = Main;
@@ -233,17 +233,17 @@
 			files = (
 				DEE0A4C72A34473400293C95 /* GameRepository.swift in Sources */,
 				76F14E1E2A34259400B1CF3C /* ContentView.swift in Sources */,
-				76F14E342A34506400B1CF3C /* InputtedAnswerView.swift in Sources */,
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
 				DEE0A4C92A34473400293C95 /* Database.swift in Sources */,
-				76F14E332A34506400B1CF3C /* AnswerInputTextField.swift in Sources */,
 				66149D322A344CCB001F8A4D /* AnswerView.swift in Sources */,
 				66149D302A344CCB001F8A4D /* StrokeView.swift in Sources */,
 				76F14E1C2A34259400B1CF3C /* SukGiSiDaeApp.swift in Sources */,
 				DEE0A4C92A34473400293C95 /* Database.swift in Sources */,
 				66149D262A344C07001F8A4D /* Canvas.swift in Sources */,
+				76F14E372A34537F00B1CF3C /* InputtedAnswerView.swift in Sources */,
 				66149D242A344C07001F8A4D /* DrawTogether.swift in Sources */,
 				66149D332A344CCB001F8A4D /* TImerView.swift in Sources */,
+				76F14E382A34537F00B1CF3C /* AnswerInputTextField.swift in Sources */,
 				66149D272A344C07001F8A4D /* Messages.swift in Sources */,
 				66149D312A344CCB001F8A4D /* CanvasView.swift in Sources */,
 				DEE0A4C82A34473400293C95 /* Game.swift in Sources */,
