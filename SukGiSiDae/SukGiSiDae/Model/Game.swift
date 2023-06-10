@@ -16,3 +16,11 @@ class Game {
         self.quizes = quizes
     }
 }
+
+struct GameModel: Codable {
+    let quizes: [String]
+
+    init(game: Game) {
+        self.quizes = game.quizes
+    }
+}
