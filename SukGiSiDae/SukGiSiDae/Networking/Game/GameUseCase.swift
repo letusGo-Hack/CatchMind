@@ -9,23 +9,23 @@ import GroupActivities
 
 typealias Quiz = String
 
-protocol HostUseCase {
-
-    var quiz: AnyPublisher<Quiz, Never> { get }
-
-    func decideWinner(_ user: User) // and start next round
-    func startQuiz() // send
+protocol GameStateOwner {
+    var state: AnyPublisher<GameState, Never> { get }
 }
 
-protocol PlayerUseCase {
+protocol HostUseCase: GameStateOwner {
+    func decideWinner(_ user: User)
+}
+
+protocol PlayerUseCase: GameStateOwner {
     func sendAnswer(_ answer: String)
 }
 
 protocol GameUseCaseProtocol: HostUseCase, PlayerUseCase {
-    var players: [User] { get }
+    func startSession()
 
-    func start()
-    func end()
+    func gameStart()
+
     func configureGroupSession(_ groupSession: GroupSession<GameActivity>)
 }
 
@@ -33,6 +33,7 @@ final class GameUseCase: GameUseCaseProtocol {
     // MARK: - Properties
 
     var players: [User] = []
+    var state: AnyPublisher<GameState, Never> = Empty<GameState, Never>.init(completeImmediately: false).eraseToAnyPublisher()
     var quiz: AnyPublisher<Quiz, Never> = Empty<Quiz, Never>.init(completeImmediately: false).eraseToAnyPublisher()
 
     @Published private var groupSession: GroupSession<GameActivity>?
@@ -54,11 +55,7 @@ final class GameUseCase: GameUseCaseProtocol {
         }
     }
 
-    func start() {
-
-    }
-
-    func end() {
+    func gameStart() {
 
     }
 
@@ -66,20 +63,8 @@ final class GameUseCase: GameUseCaseProtocol {
 
     }
 
-    func startQuiz() {
-
-    }
-
     func sendAnswer(_ answer: String) {
 
-    }
-
-    func sendEmptyStateForTest() {
-        if let messenger = messenger {
-            Task {
-                try? await messenger.send(GameState())
-            }
-        }
     }
 
     func configureGroupSession(_ groupSession: GroupSession<GameActivity>) {
@@ -137,8 +122,3 @@ final class GameUseCase: GameUseCaseProtocol {
 //        }
 //    }
 }
-
-struct GameState: Codable {
-    var tempVariable: String = "tempValue"
-}
-
