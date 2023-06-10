@@ -34,11 +34,11 @@ struct CanvasView: View {
                     StrokeView(stroke: activeStroke)
                 }
             }
-
             .background(Color(uiColor: .clear))
-            .gesture(strokeGesture)
+
         }
         .frame(maxHeight: .infinity)
+        .gesture(strokeGesture)
     }
 
     var strokeGesture: some Gesture {
